@@ -1,0 +1,10 @@
+.participant-form{
+    border-bottom: 2px solid;
+    margin: 10px 0;
+}
+button[disabled],
+button.disabled {
+    color: #999;
+    background: #DDD;
+    border: 1px solid #CCC;
+}
