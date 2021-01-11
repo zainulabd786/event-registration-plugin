@@ -250,7 +250,7 @@ function poto_registration_form($atts)
                     Have you presented this Idea before? (If Yes, specify)
                 </label>
                 <div class="cm__input__feild">
-                    <textarea class="cm__input" row="4" name="how_did_you_hear" required></textarea>
+                    <textarea class="cm__input" row="4" name="idea_presented" required></textarea>
                 </div>
             </div>
             <div class="field__group_full">
@@ -272,7 +272,7 @@ function poto_registration_form($atts)
             <div class="field__group_3 group__for__textarea">
                 <div class="cm__input__feild">
                     <label class="cm__feild__label">Login email</label>
-                    <input class="cm__input" type="login_email" name="login_email" id="login_email" required>
+                    <input class="cm__input" type="email" name="login_email" id="login_email" required>
                 </div>
                 <div class="cm__input__feild">
                     <label class="cm__feild__label">Password</label>
@@ -306,9 +306,9 @@ function poto_registration_form($atts)
             $name_of_team = $_POST['name_of_team'];
             $team_size = $_POST['team_size'];
             $team_leader = $_POST['team_leader'];
-            $idea_presented = !empty($_POST["idea_presented"]) ? "Yes" : "No";
+            $idea_presented = $_POST["idea_presented"];
             $how_did_you_hear = $_POST["how_did_you_hear"];
-
+            $login_email = $_POST['login_email'];
             $participants = array();
             for ($i = 0; $i <  $team_size; $i++) { //read participants data from post and prepares a proper array of associative arrays for multiple participants
                 $college_id_card = $_FILES["college_id_card_" . $i];
@@ -374,9 +374,9 @@ function poto_registration_form($atts)
             // echo "============";
             // print_r($_FILES);
             $args = array(
-                'user_email' => $participants[0]['participant_email'],
+                'user_email' => $login_email,
                 'user_pass' => $_POST['password'],
-                'user_login' => $participants[0]['participant_email'],
+                'user_login' => $login_email,
                 'user_registered' => date('Y-m-d H:i:s')
             );
             $user_id = wp_insert_user($args);
@@ -386,6 +386,7 @@ function poto_registration_form($atts)
             add_user_meta($user_id, 'idea_presented', $idea_presented, false);
             add_user_meta($user_id, 'how_did_you_hear', $how_did_you_hear, false);
             add_user_meta($user_id, 'participants', json_encode($participants), false);
+            
             wp_redirect($_POST['redirect_url']);
         }
 
