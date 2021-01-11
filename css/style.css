@@ -1,10 +1,128 @@
 .participant-form{
-    border-bottom: 2px solid;
-    margin: 10px 0;
+    margin-bottom: 20px;
 }
-button[disabled],
-button.disabled {
-    color: #999;
-    background: #DDD;
-    border: 1px solid #CCC;
+.cm__participant__title {
+        padding: 15px 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.toggler {
+    height: 32px;
+    width: 32px;
+    padding: 4px;
+    background: #cccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.toggler:before {content: "\2212";color: #000;font-size: 36px;line-height: 22px;display: block;}
+.toggler.active:before {
+    content: "+";
+}
+.field__group_12 {
+    margin-bottom: 20px;
+}
+.group__for__textarea {
+    margin-bottom: 30px;
+	    padding-bottom: 20px;
+}
+.field__group_full > label,
+.field__group_12 > label,
+.cm__participant__title p {
+    font-size: 18px;
+    font-weight: bold;
+}
+.field__group_12 input {
+    margin-left: 0;
+}
+.field__group_3 {
+    display: flex;
+	align-items: flex-end;
+    margin: 0 -15px;
+}
+
+.field__group_3 .cm__input__feild {
+    width: 33.33%;
+    padding: 0 15px;
+    margin-bottom: 30px;
+}
+@media (max-width: 767px) {
+	.field__group_3 {
+		display: block;
+	}
+	.field__group_3 .cm__input__feild {
+		width: 100%;
+	}
+}
+.cm__form__wrap .cm__input {
+    padding: 10px 0 16px;
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #d1d1d1;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000;
+    outline: none;
+	display: block;
+}
+
+.cm__form__wrap ::-webkit-input-placeholder { /* Edge */
+  color: #000;
+}
+
+.cm__form__wrap :-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #000;
+}
+
+.cm__form__wrap ::placeholder {
+  color: #000;
+}
+
+.cm__btn__field button {
+    padding: 8px 40px;
+    font-size: 16px;
+    line-height: 26px;
+    border-radius: 99999px;
+    border: 1px solid #96d02c;
+    background: #96d02c;
+    color: #fff;
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: all 0.3s ease;
+}
+
+.cm__btn__field button:hover {
+    color: #96d02c;
+    background: transparent;
+}
+
+label.cm__feild__label {
+    font-size: 14px;
+    line-height: 1;
+    color: #8e8d8d;
+}
+
+.cm__input__feild__number__wrap {
+    position: relative;
+}
+
+.cm__input__feild__number__wrap .cm__input__contact {
+    width: 30px;
+    height: 47px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 10px 0 16px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.cm__input__feild__number__wrap .cm__input {
+    padding-left: 30px;
+}
+.mb-10 {
+    margin-bottom: 10px;
 }

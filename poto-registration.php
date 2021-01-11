@@ -76,7 +76,7 @@ function extra_user_profile_fields($user)
 {
     $existing_documents = json_decode(get_the_author_meta('user_doc', $user->ID));
     $participants_data = json_decode(get_the_author_meta('participants', $user->ID));
-    write_log( $participants_data);
+    write_log($participants_data);
 ?>
     <h3><?php _e("Event Registration Information", "blank"); ?></h3>
 
@@ -115,10 +115,10 @@ function extra_user_profile_fields($user)
             <th><label for="participants"><?php _e("Participants"); ?></label></th>
             <td>
                 <?php
-                    foreach($participants_data as $participant){ ?>
-                        <span><?php echo $participant->participant_name ?></span>,<?php
-                    }
-                ?>
+                foreach ($participants_data as $participant) { ?>
+                    <span><?php echo $participant->participant_name ?></span>,<?php
+                                                                            }
+                                                                                ?>
             </td>
         </tr>
         <tr>
@@ -225,28 +225,73 @@ function poto_registration_form($atts)
             Successfully Registered
         </div><?php
             } ?>
-    <div class="wrap">
+    <div class="wrap cm__form__wrap">
         <form action="<?= admin_url('admin-post.php') ?>" method="post" enctype="multipart/form-data">
             <input type="hidden" name="action" value="poto_user_registration">
             <input type="hidden" name="redirect_url" value="<?php echo get_permalink($post->ID) . '?registered=ok' ?>" />
             <?php wp_nonce_field("poto_user_registration_verify"); ?>
-            <input type="text" name="name_of_team" placeholder="Name of Team">
-            <input type="number" value="1" min="1" max="4" name="team_size" id="team_size" placeholder="Team Size">
-            <input type="text" name="team_leader" placeholder="Team Leader">
-
-            <h1>Participant's Details</h1>
+            <div class="field__group_3">
+                <div class="cm__input__feild">
+                    <label class="cm__feild__label">Name of Team</label>
+                    <input class="cm__input" type="text" name="name_of_team" required>
+                </div>
+                <div class="cm__input__feild">
+                    <label class="cm__feild__label">Team Size</label>
+                    <input class="cm__input" type="number" value="1" min="1" max="4" name="team_size" id="team_size" required>
+                </div>
+                <div class="cm__input__feild">
+                    <label class="cm__feild__label">Team Captain</label>
+                    <input class="cm__input" type="text" name="team_leader" required>
+                </div>
+            </div>
             <div id="participants_details"></div>
-            <label>
-                <input type="checkbox" name="idea_presented" id="idea_presented" /> Have you presented this idea elsewhere?
-            </label>
-            <select name="how_did_you_hear" id="how_did_you_hear">
-                <option>How did you hear about this contest?</option>
-                <option value="Facebook">Facebook</option>
-                <option value="LinkedIn">LinkedIn</option>
-            </select>
-            <input type="password" name="password" id="password" placeholder="password">
-            <input type="password" name="confirm_password" id="confirm_password" placeholder="confirm password">
-            <button type="submit" id="poto_register" class="button button-primary button-large">Register</button>
+            <div class="field__group_full group__for__textarea">
+                <label>
+                    Have you presented this Idea before? (If Yes, specify)
+                </label>
+                <div class="cm__input__feild">
+                    <textarea class="cm__input" row="4" name="how_did_you_hear" required></textarea>
+                </div>
+            </div>
+            <div class="field__group_full">
+                <label>How did you hear about this contest?</label>
+            </div>
+            <div class="field__group_3 group__for__textarea">
+                <div class="cm__input__feild">
+                    <select class="cm__input" name="how_did_you_hear" id="how_did_you_hear" required>
+                        <option value="">Please select</option>
+                        <option value="LinkedIn">LinkedIn</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="Reference">Reference</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field__group_full mb-10">
+                <label>Please fill these details for account creation.</label>
+            </div>
+            <div class="field__group_3 group__for__textarea">
+                <div class="cm__input__feild">
+                    <label class="cm__feild__label">Login email</label>
+                    <input class="cm__input" type="login_email" name="login_email" id="login_email" required>
+                </div>
+                <div class="cm__input__feild">
+                    <label class="cm__feild__label">Password</label>
+                    <input class="cm__input" type="password" name="password" id="password" required>
+                </div>
+                <div class="cm__input__feild">
+                    <label class="cm__feild__label">Confirm password</label>
+                    <input class="cm__input" type="password" name="confirm_password" id="confirm_password" required>
+                </div>
+            </div>
+            <div class="field__group_full">
+                <p>
+                    <label>
+                        <input type="checkbox" name="terms" id="terms" required /> Check here if you accept these <a href="#legal-popup"> T&amp;C</a></label>
+                </p>
+            </div>
+            <div class="cm__btn__field">
+                <button type="submit" id="poto_register" class="button button-primary button-large">Register</button>
+            </div>
         </form>
     </div><?php
             return ob_get_clean();
