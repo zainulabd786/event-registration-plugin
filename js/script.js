@@ -1,10 +1,9 @@
 jQuery(document).ready(function ($) {
-  setTimeout(function () {
-    $(".toggler").click(function () {
-      $(this).toggleClass("active");
-      $(this).parent().next().slideToggle();
-    });
-  }, 3000);
+  $(document).on("click", ".toggler", function () {
+    $(this).toggleClass("active");
+    $(this).parent().next().slideToggle();
+  });
+
   $("#team_size").change((e) => {
     const numberOfParticipants = parseInt(e.target.value) || 1;
     renderMarkup(numberOfParticipants);
@@ -41,7 +40,7 @@ const renderMarkup = (numberOfParticipants = 1) => {
 
 const renderParticipatForm = (id) => `
     <div class="cm__participant__title">
-        <p>Participant's Details</p>
+        <p>Participant ${id + 1}</p>
         <span class="toggler"></span>
     </div>
     <div class="participant-form">
