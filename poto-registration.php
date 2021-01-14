@@ -44,6 +44,14 @@ add_action('admin_footer', function () {
     ob_end_flush();
 });
 
+
+add_action('wp_logout', 'ps_redirect_after_logout');
+function ps_redirect_after_logout()
+{
+    wp_redirect(get_home_url());
+    exit();
+}
+
 add_action("show_user_profile", "add_custom_user_profile_fields");
 add_action("edit_user_profile", "add_custom_user_profile_fields");
 function add_custom_user_profile_fields($user)
@@ -195,6 +203,10 @@ function save_user_docs($user_id)
         });
         update_user_meta($user_id, 'user_doc', json_encode(array_values($user_doc)));
     }
+    // $to = get_option('admin_email');
+    // $subject = "New Event registration from potomac site";
+    // $body = "Okay";
+    // wp_mail( $to, $subject, $body );
 }
 
 
@@ -286,7 +298,7 @@ function poto_registration_form($atts)
             <div class="field__group_full">
                 <p>
                     <label>
-                        <input type="checkbox" name="terms" id="terms" required /> Check here if you accept these <a href="#legal-popup"> T&amp;C</a></label>
+                        <input type="checkbox" name="terms" id="terms" required /> By clicking accept you are agreeing to the <a href="#legal-popup"> T&amp;C</a></label>
                 </p>
             </div>
             <div class="cm__btn__field">
@@ -386,7 +398,7 @@ function poto_registration_form($atts)
             add_user_meta($user_id, 'idea_presented', $idea_presented, false);
             add_user_meta($user_id, 'how_did_you_hear', $how_did_you_hear, false);
             add_user_meta($user_id, 'participants', json_encode($participants), false);
-            
+
             wp_redirect($_POST['redirect_url']);
         }
 
