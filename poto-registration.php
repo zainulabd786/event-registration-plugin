@@ -21,8 +21,10 @@ function enqueue_scripts()
 {
 
     wp_enqueue_script('jquery', ' https://code.jquery.com/jquery-1.9.1.min.js', array(''), '1.9.1', true);
-    wp_enqueue_script('poto-registration-js', plugins_url('/js/script.js', __FILE__), array('jquery'));
-    wp_enqueue_style('myCSS', plugins_url('/css/style.css', __FILE__));
+    wp_enqueue_script('jquery-ui-js', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js', array('jquery'));
+    wp_enqueue_script('poto-registration-js', plugins_url('/js/script.js', __FILE__), array('jquery', 'jquery-ui-js'));
+    wp_enqueue_style('style-css', plugins_url('/css/style.css', __FILE__));
+    wp_enqueue_style('jquery-ui-css', "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css");
 }
 
 
@@ -224,10 +226,6 @@ add_shortcode('poto_registration_form', 'poto_registration_form');
 function poto_registration_form($atts)
 {
 
-    // if (is_user_logged_in()) {
-    //     wp_redirect(get_edit_profile_url());
-    //     exit;
-    // }
     global $post;
 
     ob_start();

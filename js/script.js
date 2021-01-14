@@ -8,15 +8,6 @@ jQuery(document).ready(function ($) {
     $(this).parent().next().slideToggle();
   });
 
-  $(document).on("change", ".dob", function () {
-    const birthday = $(this).val();
-    const id = $(this).data("id");
-    if (underAgeValidate(birthday)) {
-      $(`#dob_err_${id}`).html("Age cannot be less than 18");
-    } else {
-      $(`#dob_err_${id}`).html("");
-    }
-  });
   $("#team_size").keyup((e) => {
     const value = parseInt(e.target.value);
     if (value > 4) $("#team_size").val(4);
@@ -45,31 +36,40 @@ jQuery(document).ready(function ($) {
 
 const renderMarkup = (numberOfParticipants = 1) => {
   let markup = "";
+  var maxBirthdayDate = new Date();
+  maxBirthdayDate.setFullYear(maxBirthdayDate.getFullYear() - 18);
   for (let i = 0; i < numberOfParticipants; i++) {
     markup += renderParticipatForm(i);
   }
   jQuery("#participants_details").html(markup);
+  jQuery(".dob").datepicker({
+    changeMonth: true,
+    changeYear: true,
+    yearRange: "1970:" + maxBirthdayDate.getFullYear(),
+    maxDate: maxBirthdayDate,
+  });
+  jQuery(".graduation_date").datepicker({
+    changeMonth: true,
+    changeYear: true,
+    showButtonPanel: true,
+    dateFormat: "MM yy",
+    maxDate: new Date(),
+    yearRange: "1970:2021",
+    onClose: function (dateText, inst) {
+      var month = jQuery(
+        "#ui-datepicker-div .ui-datepicker-month :selected"
+      ).val();
+      var year = jQuery(
+        "#ui-datepicker-div .ui-datepicker-year :selected"
+      ).val();
+      jQuery(this).datepicker("setDate", new Date(year, month, 1));
+      jQuery("#ui-datepicker-div").removeClass("graduation_datepicker");
+    },
+    beforeShow: function (input, inst) {
+      jQuery("#ui-datepicker-div").addClass("graduation_datepicker");
+    },
+  });
 };
-
-function underAgeValidate(birthday) {
-  // it will accept two types of format yyyy-mm-dd and yyyy/mm/dd
-  var optimizedBirthday = birthday.replace(/-/g, "/");
-
-  //set date based on birthday at 01:00:00 hours GMT+0100 (CET)
-  var myBirthday = new Date(optimizedBirthday);
-
-  // set current day on 01:00:00 hours GMT+0100 (CET)
-  var currentDate = new Date().toJSON().slice(0, 10) + " 01:00:00";
-
-  // calculate age comparing current date and borthday
-  var myAge = ~~((Date.now(currentDate) - myBirthday) / 31557600000);
-
-  if (myAge < 18) {
-    return true;
-  } else {
-    return false;
-  }
-}
 
 const renderParticipatForm = (id) => `
     <div class="cm__participant__title">
@@ -95,8 +95,7 @@ const renderParticipatForm = (id) => `
 
         <div class="cm__input__feild">
 			<label class="cm__feild__label">DOB</label>
-            <input class="cm__input dob" type="date" name="participant_dob_${id}" id="participant_dob_${id}" data-id="${id}" required/>
-            <div class="error" id="dob_err_${id}"></div>
+            <input class="cm__input dob" type="text" name="participant_dob_${id}" id="participant_dob_${id}" data-id="${id}" required/>
         </div>
         </div>
         
@@ -128,7 +127,7 @@ const renderParticipatForm = (id) => `
         <div class="field__group_3">
         <div class="cm__input__feild">
         <label class="cm__feild__label">Graduation Date</label>
-        <input class="cm__input" type="date" name="graduation_date_${id}" id="graduation_date_${id}" required/></div>
+        <input class="cm__input graduation_date" type="text" name="graduation_date_${id}" id="graduation_date_${id}" required/></div>
         
         <div class="cm__input__feild">
         <label class="cm__feild__label">Email</label>

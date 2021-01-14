@@ -143,6 +143,9 @@ label.cm__feild__label {
     color: #0f5132;
     background-color: #d1e7dd;
 }
+.graduation_datepicker .ui-datepicker-calendar, .graduation_datepicker .ui-datepicker-current{
+    display: none;
+}
 /*backend profile page style*/
 .wp-core-ui.profile-php #wpcontent, 
 .wp-core-ui.profile-php {
