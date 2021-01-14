@@ -10,8 +10,6 @@ jQuery(document).ready(function ($) {
 
   $(document).on("change", ".dob", function () {
     const birthday = $(this).val();
-    console.log("birthday", birthday);
-    console.log("underAgeValidate(birthday)", underAgeValidate(birthday));
     const id = $(this).data("id");
     if (underAgeValidate(birthday)) {
       $(`#dob_err_${id}`).html("Age cannot be less than 18");
@@ -19,7 +17,10 @@ jQuery(document).ready(function ($) {
       $(`#dob_err_${id}`).html("");
     }
   });
-
+  $("#team_size").keyup((e) => {
+    const value = parseInt(e.target.value);
+    if (value > 4) $("#team_size").val(4);
+  });
   $("#team_size").change((e) => {
     const numberOfParticipants = parseInt(e.target.value) || 1;
     renderMarkup(numberOfParticipants);
