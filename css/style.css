@@ -2,7 +2,7 @@
     margin-bottom: 20px;
 }
 .cm__participant__title {
-        padding: 15px 0 40px;
+    padding: 15px 0 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,7 +11,7 @@
     height: 32px;
     width: 32px;
     padding: 4px;
-    background: #cccc;
+    border:1px solid #000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -125,4 +125,144 @@ label.cm__feild__label {
 }
 .mb-10 {
     margin-bottom: 10px;
+}
+
+/*backend profile page style*/
+.wp-core-ui.profile-php #wpcontent, 
+.wp-core-ui.profile-php {
+    background: #fff;
+    margin: 0;
+}
+.wp-core-ui.profile-php #wpadminbar {
+    background: #e2e2e2;
+    height: auto;
+    border: 0;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+.wp-core-ui.profile-php #wpadminbar #wp-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+}
+.wp-core-ui.profile-php #wpcontent {
+    padding-top: 40px;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.wp-core-ui.profile-php #wpadminbar {
+    background: #eaeaea;
+    height: auto;
+    border: 0;
+}
+.wp-core-ui.profile-php #profile-page h2:not(:last-of-type),
+.wp-core-ui.profile-php #profile-page .form-table:not(:last-of-type):not(:nth-of-type(4)),
+.wp-core-ui.profile-php #wpcontent #wp-admin-bar-top-secondary img,
+.wp-core-ui.profile-php #adminmenuback, 
+.wp-core-ui.profile-php #adminmenuwrap, 
+.wp-core-ui.profile-php #wpfooter, 
+.wp-core-ui.profile-php #screen-meta-links .show-settings, 
+.wp-core-ui.profile-php #wpcontent #wp-admin-bar-root-default li:not(:last-child), 
+.wp-core-ui.profile-php #wpcontent #wp-admin-bar-root-default ul, 
+.wp-core-ui.profile-php #wpcontent #wp-admin-bar-root-default a:before {
+    display: none !important;
+}
+.wp-core-ui.profile-php #wpcontent #wp-admin-bar-root-default .menupop a.ab-item {
+    background: #eaeaea url(http://potomac.bonzoheads.com/wp-content/uploads/2019/10/potomac-logo.png) no-repeat center;
+    background-size: 200px;
+    font-size: 0;
+    height: auto;
+    width: 240px;
+    padding: 35px 0;
+    margin: 0;
+    display: block;
+    float: none;
+    position: static;
+}
+.wp-core-ui.profile-php #wpcontent #wp-admin-bar-top-secondary {
+    padding-right: 26px;
+}
+.wp-core-ui.profile-php #wpcontent #wp-admin-bar-top-secondary .menupop a.ab-item {
+    color: #000;
+    background: transparent;
+}
+.wp-core-ui.profile-php #wpcontent #wp-admin-bar-top-secondary ul#wp-admin-bar-user-actions {
+    background: #fff;
+}
+.wp-core-ui.profile-php #wpcontent #wp-admin-bar-top-secondary ul#wp-admin-bar-user-actions li{
+    margin-left: 16px;
+    margin-right: 16px;
+}
+.wp-core-ui.profile-php #profile-page h1.wp-heading-inline {
+    font-size: 38px;
+    font-weight: bold;
+    line-height: 48px;
+}
+.wp-core-ui.profile-php #profile-page h1.wp-heading-inline:after {
+    content: "";
+    background: #96cd33;
+    display: block;
+    height: 5px;
+    width: 80px;
+    margin-top: 20px;
+}
+.wp-core-ui.profile-php #profile-page h2,
+.wp-core-ui.profile-php #profile-page h3 {
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 20px;
+    margin-bottom: 0;
+    margin-top: 70px;
+}
+.wp-core-ui.profile-php #profile-page input[type="file"]{
+    padding: 0px;
+    border-radius: 0;
+    border: 0;
+    font-size: 16px;
+    line-height: 26px;
+    color: #000;
+    outline: none;
+    display: block;
+    box-shadow: none;
+    width: 25em !important;
+    background: transparent;
+}
+.wp-core-ui.profile-php #profile-page #submit {
+    padding: 8px 40px;
+    font-size: 16px;
+    line-height: 26px;
+    border-radius: 99999px;
+    border: 1px solid #96d02c;
+    background: #96d02c;
+    color: #fff;
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: all 0.3s ease;
+    width: auto !important;
+}
+.wp-core-ui.profile-php #profile-page #submit:hover {
+    color: #96d02c;
+    background: transparent;
+}
+.wp-core-ui.profile-php #profile-page .button {
+    border-color: #96d02c;
+    color: #96d02c;
+}
+
+.wp-core-ui.profile-php #profile-page .button:hover {
+    background: #96d02c;
+    color: #fff;
+    border-color: #96d02c;
+}
+.wp-core-ui.profile-php #profile-page .form-table tbody tr:not(:last-of-type){
+    border-bottom: 1px solid #d1d1d1;
+}
+.wp-core-ui.profile-php #profile-page .form-table tbody tr td{
+	width: calc(100% - 200px);
 }
