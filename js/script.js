@@ -55,6 +55,7 @@ const renderMarkup = (numberOfParticipants = 1) => {
     dateFormat: "MM yy",
     maxDate: new Date(),
     yearRange: "1970:2021",
+    showMonthAfterYear: true,
     onClose: function (dateText, inst) {
       var month = jQuery(
         "#ui-datepicker-div .ui-datepicker-month :selected"
@@ -131,7 +132,7 @@ const renderParticipatForm = (id) => `
         
         <div class="cm__input__feild">
         <label class="cm__feild__label">Email</label>
-        <input class="cm__input" type="text" name="participant_email_${id}" id="participant_email_${id}" required/></div>
+        <input class="cm__input" type="email" name="participant_email_${id}" id="participant_email_${id}" required/></div>
         
         <div class="cm__input__feild">
         <label class="cm__feild__label">College ID Card</label>
