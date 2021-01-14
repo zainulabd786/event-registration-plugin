@@ -132,7 +132,6 @@ const renderParticipatForm = (id) => `
             <option value="">Please select</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
-            <option value="other">Other</option>
             <option value="prefer not to disclose">Prefer not to disclose</option>
         </select></div>
         </div>
