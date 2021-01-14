@@ -288,7 +288,7 @@ function poto_registration_form($atts)
                 </div>
                 <div class="cm__input__feild">
                     <label class="cm__feild__label">Password</label>
-                    <input class="cm__input" type="password" name="password" id="password" required>
+                    <input class="cm__input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" type="password" name="password" id="password" required>
                 </div>
                 <div class="cm__input__feild">
                     <label class="cm__feild__label">Confirm password</label>
