@@ -248,21 +248,27 @@ function poto_registration_form($atts)
                     <input class="cm__input" type="text" name="name_of_team" required>
                 </div>
                 <div class="cm__input__feild">
-                    <label class="cm__feild__label">Team Size</label>
+                    <label class="cm__feild__label">Team Size (1-4 members)</label>
                     <input class="cm__input" type="number" value="1" min="1" max="4" name="team_size" id="team_size" required>
                 </div>
                 <div class="cm__input__feild">
-                    <label class="cm__feild__label">Team Captain</label>
+                    <label class="cm__feild__label">Team Captain Name</label>
                     <input class="cm__input" type="text" name="team_leader" required>
                 </div>
             </div>
             <div id="participants_details"></div>
-            <div class="field__group_full group__for__textarea">
+            <div class="field__group_full">
                 <label>
                     Have you presented this Idea before? (If Yes, specify)
                 </label>
-                <div class="cm__input__feild">
-                    <textarea class="cm__input" row="4" name="idea_presented" required></textarea>
+                <div class="field__group_3 group__for__textarea">
+                    <div class="cm__input__feild">
+                        <select class="cm__input" name="idea_presented" id="idea_presented" required>
+                            <option value="">Please select</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="field__group_full">
@@ -279,7 +285,7 @@ function poto_registration_form($atts)
                 </div>
             </div>
             <div class="field__group_full mb-10">
-                <label>Please fill these details for account creation.</label>
+                <label>Fill the following details to create login</label>
             </div>
             <div class="field__group_3 group__for__textarea">
                 <div class="cm__input__feild">
@@ -298,7 +304,7 @@ function poto_registration_form($atts)
             <div class="field__group_full">
                 <p>
                     <label>
-                        <input type="checkbox" name="terms" id="terms" required /> I have read and agree to the <a href="#legal-popup">Terms &amp;Conditions</a></label>
+                        <input type="checkbox" name="terms" id="terms" required /> I have read and agree to the <a href="#legal-popup">Terms &amp; Conditions</a></label>
                 </p>
             </div>
             <div class="cm__btn__field">
