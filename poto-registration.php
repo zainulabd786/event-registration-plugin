@@ -298,11 +298,11 @@ function poto_registration_form($atts)
             <div class="field__group_full">
                 <p>
                     <label>
-                        <input type="checkbox" name="terms" id="terms" required /> By clicking accept you are agreeing to the <a href="#legal-popup"> T&amp;C</a></label>
+                        <input type="checkbox" name="terms" id="terms" required /> I have read and agree to the <a href="#legal-popup">Terms &amp;Conditions</a></label>
                 </p>
             </div>
             <div class="cm__btn__field">
-                <button type="submit" id="poto_register" class="button button-primary button-large">Register</button>
+                <button type="submit" id="poto_register" class="button button-primary button-large">register</button>
             </div>
         </form>
     </div><?php
