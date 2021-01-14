@@ -132,7 +132,17 @@ label.cm__feild__label {
     font-size: 12px;
     position: absolute;
 }
-
+.successfully_registered {
+    display: block;
+    position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    border: 1px solid #badbcc;
+    border-radius: .25rem;
+    color: #0f5132;
+    background-color: #d1e7dd;
+}
 /*backend profile page style*/
 .wp-core-ui.profile-php #wpcontent, 
 .wp-core-ui.profile-php {
