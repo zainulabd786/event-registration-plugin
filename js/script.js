@@ -1,14 +1,31 @@
 jQuery(document).ready(function ($) {
+  
+  $("#your-profile").attr("enctype", "multipart/form-data");
+  $("#your-profile").attr("encoding", "multipart/form-data");
+  renderMarkup();
+
   $(document).on("click", ".toggler", function () {
     $(this).toggleClass("active");
     $(this).parent().next().slideToggle();
   });
 
+  $(document).on("change", ".dob", function () {
+    const birthday = $(this).val();
+    console.log("birthday", birthday);
+    console.log("underAgeValidate(birthday)", underAgeValidate(birthday));
+    const id = $(this).data("id");
+    if(underAgeValidate(birthday)){
+      $(`#dob_err_${id}`).html("Age cannot be less than 18")
+    } else{
+      $(`#dob_err_${id}`).html("")
+    }
+  });
+
   $("#team_size").change((e) => {
     const numberOfParticipants = parseInt(e.target.value) || 1;
     renderMarkup(numberOfParticipants);
+    disableFutureDates()
   });
-  renderMarkup();
 
   $("#password, #confirm_password").keyup(() => {
     let password = $("#password").val();
@@ -17,9 +34,6 @@ jQuery(document).ready(function ($) {
       $("#poto_register").attr("disabled", true);
     else $("#poto_register").attr("disabled", false);
   });
-
-  jQuery("#your-profile").attr("enctype", "multipart/form-data");
-  jQuery("#your-profile").attr("encoding", "multipart/form-data");
 
   const docs_to_delete = [];
   $(".poto_remove_doc").click((e) => {
@@ -37,6 +51,26 @@ const renderMarkup = (numberOfParticipants = 1) => {
   }
   jQuery("#participants_details").html(markup);
 };
+
+function underAgeValidate(birthday) {
+  // it will accept two types of format yyyy-mm-dd and yyyy/mm/dd
+  var optimizedBirthday = birthday.replace(/-/g, "/");
+
+  //set date based on birthday at 01:00:00 hours GMT+0100 (CET)
+  var myBirthday = new Date(optimizedBirthday);
+
+  // set current day on 01:00:00 hours GMT+0100 (CET)
+  var currentDate = new Date().toJSON().slice(0, 10) + " 01:00:00";
+
+  // calculate age comparing current date and borthday
+  var myAge = ~~((Date.now(currentDate) - myBirthday) / 31557600000);
+
+  if (myAge < 18) {
+    return true;
+  } else {
+    return false;
+  }
+} 
 
 const renderParticipatForm = (id) => `
     <div class="cm__participant__title">
@@ -62,7 +96,8 @@ const renderParticipatForm = (id) => `
 
         <div class="cm__input__feild">
 			<label class="cm__feild__label">Participant DOB</label>
-            <input class="cm__input" type="date" name="participant_dob_${id}" id="participant_dob_${id}" required/>
+            <input class="cm__input dob" type="date" name="participant_dob_${id}" id="participant_dob_${id}" data-id="${id}" required/>
+            <div class="error" id="dob_err_${id}"></div>
         </div>
         </div>
         
@@ -114,7 +149,7 @@ const renderParticipatForm = (id) => `
         <label class="cm__feild__label">Participant's contact number</label>
 <div class="cm__input__feild__number__wrap">
 		<span class="cm__input__contact">+91</span>
-        <input class="cm__input cm__input__contact__number" type="text" name="participant_contact_number_${id}" id="participant_contact_number_${id}" required/></div></div>
+        <input class="cm__input cm__input__contact__number" pattern="[789][0-9]{9}" title="Please enter a valid 10 digit mobile number" type="text" name="participant_contact_number_${id}" id="participant_contact_number_${id}" required/></div></div>
 
         <div class="cm__input__feild">
         <label class="cm__feild__label">Participants City</label>

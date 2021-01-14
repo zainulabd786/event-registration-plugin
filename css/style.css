@@ -127,6 +127,12 @@ label.cm__feild__label {
     margin-bottom: 10px;
 }
 
+.error{
+    color: red;
+    font-size: 12px;
+    position: absolute;
+}
+
 /*backend profile page style*/
 .wp-core-ui.profile-php #wpcontent, 
 .wp-core-ui.profile-php {
@@ -266,3 +272,4 @@ label.cm__feild__label {
 .wp-core-ui.profile-php #profile-page .form-table tbody tr td{
 	width: calc(100% - 200px);
 }
+
