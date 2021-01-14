@@ -138,7 +138,7 @@ function extra_user_profile_fields($user)
             </td>
         </tr>
         <tr>
-            <th><label for="user_doc"><?php _e("Existing Documents"); ?></label></th>
+            <th><label><?php _e("Existing Documents"); ?></label></th>
             <td>
                 <input type="hidden" name="docs_to_delete" id="docs_to_delete" />
                 <table>
@@ -279,6 +279,7 @@ function poto_registration_form($atts)
                         <option value="LinkedIn">LinkedIn</option>
                         <option value="Facebook">Facebook</option>
                         <option value="Reference">Reference</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
             </div>
