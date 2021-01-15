@@ -256,17 +256,23 @@ function poto_registration_form($atts)
             </div>
             <div id="participants_details"></div>
             <div class="field__group_full">
-                <label>
-                    Have you presented this Idea before? (If Yes, specify)
-                </label>
-                <div class="field__group_3 group__for__textarea">
-                    <div class="cm__input__feild">
-                        <select class="cm__input" name="idea_presented" id="idea_presented" required>
-                            <option value="">Please select</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
+                <div>
+                    <label>
+                        Have you presented this Idea before?
+                    </label>
+                    <div class="field__group_3 group__for__textarea">
+                        <div class="cm__input__feild">
+                            <select class="cm__input" name="idea_presented" id="idea_presented" required>
+                                <option value="">Please select</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+
+                        </div>
                     </div>
+                </div>
+                <div class="idea_presented_specify">
+
                 </div>
             </div>
             <div class="field__group_full">
@@ -323,7 +329,7 @@ function poto_registration_form($atts)
             $name_of_team = $_POST['name_of_team'];
             $team_size = $_POST['team_size'];
             $team_leader = $_POST['team_leader'];
-            $idea_presented = $_POST["idea_presented"];
+            $idea_presented = !empty($_POST['idea_presented_specify']) ? $_POST['idea_presented_specify'] : $_POST["idea_presented"];
             $how_did_you_hear = $_POST["how_did_you_hear"];
             $login_email = $_POST['login_email'];
             $participants = array();

@@ -25,6 +25,27 @@ jQuery(document).ready(function ($) {
     else $("#poto_register").attr("disabled", false);
   });
 
+  $("#idea_presented").change((e) => {
+    const value = e.target.value;
+    if (value === "yes") {
+      $(".idea_presented_specify").html(
+        `
+         <label>
+            Please specify
+          </label>
+          <div class="idea_presented_specify">
+            <div class="field__group_3 group__for__textarea">
+              <div class="cm__input__feild">
+                <input type="text" name="idea_presented_specify" id="idea_presented_specify" required />
+              </div>
+            </div>
+          </div>`
+      );
+    } else {
+      $(".idea_presented_specify").html("");
+    }
+  });
+
   const docs_to_delete = [];
   $(".poto_remove_doc").click((e) => {
     const attach_id = e.target.getAttribute("data-id");
