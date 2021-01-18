@@ -134,11 +134,21 @@ function extra_user_profile_fields($user)
         <tr>
             <th><label for="participants"><?php _e("Participants"); ?></label></th>
             <td>
-                <?php
-                foreach ($participants_data as $participant) { ?>
-                    <span><?php echo $participant->participant_name ?></span>,<?php
-                                                                            }
-                                                                                ?>
+                <table><?php
+                        foreach ($participants_data as $participant) {
+                            $college_id_card_url = wp_get_attachment_url($participant->college_id_card);
+                            $photo_id_card_url = wp_get_attachment_url($participant->photo_id_card); ?>
+                        <tr>
+                            <td><?php echo $participant->participant_name; ?></td>
+                            <td>
+                                <strong>College ID:</strong><span><a href="<?php echo $college_id_card_url ?>" target="_blank"><?php echo basename($college_id_card_url); ?></a></span>
+                                <strong>Photo ID:</strong><span><a href="<?php echo $photo_id_card_url ?>" target="_blank"><?php echo basename($photo_id_card_url); ?></a></span>
+                            </td>
+                        </tr><?php
+                            }
+                                ?>
+
+                </table>
             </td>
         </tr>
         <tr>
