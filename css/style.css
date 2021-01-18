@@ -180,6 +180,7 @@ label.cm__feild__label {
     height: auto;
     border: 0;
 }
+.wp-core-ui.profile-php #wpbody .update-nag.notice.notice-warning.inline,
 .wp-core-ui.profile-php #profile-page h2:not(:last-of-type),
 .wp-core-ui.profile-php #profile-page .form-table:not(:last-of-type):not(:nth-of-type(4)),
 .wp-core-ui.profile-php #wpcontent #wp-admin-bar-top-secondary img,
