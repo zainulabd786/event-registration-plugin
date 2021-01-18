@@ -215,10 +215,6 @@ function save_user_docs($user_id)
         });
         update_user_meta($user_id, 'user_doc', json_encode(array_values($user_doc)));
     }
-    // $to = get_option('admin_email');
-    // $subject = "New Event registration from potomac site";
-    // $body = "Okay";
-    // wp_mail( $to, $subject, $body );
 }
 
 
@@ -419,7 +415,21 @@ function poto_registration_form($atts)
             add_user_meta($user_id, 'idea_presented', $idea_presented, false);
             add_user_meta($user_id, 'how_did_you_hear', $how_did_you_hear, false);
             add_user_meta($user_id, 'participants', json_encode($participants), false);
+            $to = get_option('admin_email');
+            $subject = "New Event registration from potomac site";
+            $body = "Team Name: " . $name_of_team . "<br/>" .
+                "Team Leader: " . $team_leader . "<br/>" .
+                "Email: " . $login_email . "<br/>" .
+                "View more details at " . get_admin_edit_user_link($user_id);
+            $headers = array('Content-Type: text/html; charset=UTF-8');
+            wp_mail(
+                $to,
+                $subject,
+                $body,
+                $headers
+            );
 
+            wp_mail($login_email, "Potomac Event Registration", "You are successfully registered on potomac.ai event");
             wp_redirect($_POST['redirect_url']);
         }
 
@@ -445,3 +455,18 @@ function poto_registration_form($atts)
 
 
         add_action('wp', 'add_login_check');
+
+
+
+
+
+        function get_admin_edit_user_link($user_id)
+        {
+
+            if (get_current_user_id() == $user_id)
+                $edit_link = get_edit_profile_url($user_id);
+            else
+                $edit_link = add_query_arg('user_id', $user_id, self_admin_url('user-edit.php'));
+
+            return $edit_link;
+        }
