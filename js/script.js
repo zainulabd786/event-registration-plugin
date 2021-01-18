@@ -117,7 +117,7 @@ const renderParticipatForm = (id) => `
 
         <div class="cm__input__feild">
 			<label class="cm__feild__label">DOB</label>
-            <input class="cm__input dob" type="text" name="participant_dob_${id}" id="participant_dob_${id}" data-id="${id}" required/>
+            <input class="cm__input dob" type="text" autocomplete="off" name="participant_dob_${id}" id="participant_dob_${id}" data-id="${id}" required/>
         </div>
         </div>
         
@@ -149,7 +149,7 @@ const renderParticipatForm = (id) => `
         <div class="field__group_3">
         <div class="cm__input__feild">
         <label class="cm__feild__label">Graduation Date</label>
-        <input class="cm__input graduation_date" type="text" name="graduation_date_${id}" id="graduation_date_${id}" required/></div>
+        <input class="cm__input graduation_date" autocomplete="off" type="text" name="graduation_date_${id}" id="graduation_date_${id}" required/></div>
         
         <div class="cm__input__feild">
         <label class="cm__feild__label">Email</label>
