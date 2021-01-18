@@ -244,7 +244,7 @@ function poto_registration_form($atts)
     <div class="wrap cm__form__wrap">
         <form action="<?= admin_url('admin-post.php') ?>" method="post" enctype="multipart/form-data">
             <input type="hidden" name="action" value="poto_user_registration">
-            <input type="hidden" name="redirect_url" value="<?php echo get_permalink($post->ID) . '?registered=ok' ?>" />
+            <input type="hidden" name="redirect_url" value="<?php echo get_permalink($post->ID) . '?registered=ok#register' ?>" />
             <?php wp_nonce_field("poto_user_registration_verify"); ?>
             <div class="field__group_3">
                 <div class="cm__input__feild">
