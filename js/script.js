@@ -36,7 +36,7 @@ jQuery(document).ready(function ($) {
           <div class="idea_presented_specify">
             <div class="field__group_3 group__for__textarea">
               <div class="cm__input__feild">
-                <input type="text" name="idea_presented_specify" id="idea_presented_specify" required />
+                <input type="text" name="idea_presented_specify" id="idea_presented_specify" class="cm__input" required />
               </div>
             </div>
           </div>`
