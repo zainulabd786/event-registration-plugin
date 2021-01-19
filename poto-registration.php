@@ -439,7 +439,7 @@ function poto_registration_form($atts)
                 $headers
             );
 
-            wp_mail($login_email, "Potomac Event Registration", "You are successfully registered on potomac.ai event");
+            wp_mail($login_email, "Potomac Innovate India Registration", "You have successfully registered for Innovate India contest at Potomac");
             wp_redirect($_POST['redirect_url']);
         }
 
