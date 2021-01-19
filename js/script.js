@@ -74,7 +74,6 @@ const renderMarkup = (numberOfParticipants = 1) => {
     changeYear: true,
     showButtonPanel: true,
     dateFormat: "MM yy",
-    maxDate: new Date(),
     yearRange: "1970:2030",
     showMonthAfterYear: true,
     onClose: function (dateText, inst) {
@@ -173,13 +172,13 @@ const renderParticipatForm = (id) => `
 
         <div class="cm__input__feild">
         <label class="cm__feild__label">City</label>
-        <input class="cm__input" type="text" name="participants_city_${id}" id="participants_city_${id}" required/></div>
+        <input class="cm__input" type="text" name="participants_city_${id}" id="participants_city_${id}" onkeypress="return /[a-z]/i.test(event.key)" required/></div>
         </div>
         
         <div class="field__group_3">
         <div class="cm__input__feild">
         <label class="cm__feild__label">Nationality</label>
-        <input class="cm__input" type="text" name="participants_nationality_${id}" id="participants_nationality_${id}" required/></div>
+        <input class="cm__input" type="text" name="participants_nationality_${id}" id="participants_nationality_${id}" onkeypress="return /[a-z]/i.test(event.key)" required/></div>
 
         <div class="cm__input__feild">
         <label class="cm__feild__label">Gender</label>
