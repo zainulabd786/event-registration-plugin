@@ -75,7 +75,7 @@ const renderMarkup = (numberOfParticipants = 1) => {
     showButtonPanel: true,
     dateFormat: "MM yy",
     maxDate: new Date(),
-    yearRange: "1970:2021",
+    yearRange: "1970:2030",
     showMonthAfterYear: true,
     onClose: function (dateText, inst) {
       var month = jQuery(
